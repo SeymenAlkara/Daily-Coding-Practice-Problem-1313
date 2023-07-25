@@ -1,0 +1,31 @@
+# bitwise and of all integers between M and N
+# used bin() method for binary conversion
+
+def takeBitwiseAND(M, N): # takes in base-10 integers
+  listem = []
+  # pad zeros to the left according to the largest number M, N whichever is largest
+  if M > N: # if M bigger rearrange-reassign, so that N is always bigger
+    M, N = N, M
+  lnBin = len(bin(N).replace('0b',''))
+  for i in range(M,N+1):
+    toPad = bin(i).replace('0b','')
+    if len(toPad) < lnBin:
+      toPad = (lnBin-len(toPad))*'0'+toPad
+
+    listem.append(toPad)
+  return listem
+
+def makeBitwiseAND(listeci):
+  alo = '1'*len(listeci[0])
+
+#  listem = []
+  for strng in listeci:
+    chr = ''
+    for idx in range(len(strng)):
+
+      chr = chr + str(int(bool(int(alo[idx])) & bool(int(strng[idx]))))
+    alo = chr
+  return alo # string
+
+print(takeBitwiseAND(32,7))
+makeBitwiseAND(takeBitwiseAND(32,7))
